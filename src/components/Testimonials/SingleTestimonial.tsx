@@ -28,7 +28,7 @@ const SingleTestimonial = ({ testimonial }: { testimonial: Testimonial }) => {
           {ratingIcons}
         </div>
 
-        <p className="mb-6 text-base text-body-color dark:text-dark-6">
+        <p className="mb-6 text-base text-body-color dark:text-dark-6 text-justify">
           “{content}
         </p>
 

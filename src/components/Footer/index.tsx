@@ -85,7 +85,7 @@ const Footer = () => {
                   className="max-w-full"
                 />
               </Link>
-              <p className="mb-8 max-w-[270px] text-base text-gray-7">
+              <p className="mb-8 max-w-[270px] text-base text-gray-7 text-justify">
               Our mission is to build cutting-edge solutions while empowering organizations globally through collaborative innovation and knowledge-sharing.
               </p>
               <div className="-mx-3 flex items-center">

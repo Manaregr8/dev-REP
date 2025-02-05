@@ -15,7 +15,7 @@ const About = () => {
                 <h2 data-pointer="hover" className="mb-5 text-3xl font-bold leading-tight text-dark dark:text-white sm:text-[40px] sm:leading-[1.2]">
                   DevRhylme Foundation
                 </h2>
-                <p className="mb-10 text-base leading-relaxed text-body-color dark:text-dark-6">
+                <p className="mb-10 text-base leading-relaxed text-body-color dark:text-dark-6 text-justify">
                 The DevRhylme Foundation is a non-profit open-source organization driving impactful innovation in OpenCV, Generative AI, and Web 3.0 technologies. We empower a global community of developers and tech enthusiasts to collaborate, create, and lead in shaping the future of technology. Through knowledge-sharing and groundbreaking initiatives, we are making advanced technology accessible, fostering creativity, and delivering transformative solutions.
                   <br /> <br />
                   At DevRhylme Foundation, we aim to empower a global community through innovation in OpenCV, Generative AI, and Web 3.0. We focus on making cutting-edge technologies accessible, fostering collaboration, and driving impactful solutions to shape the future of technology.

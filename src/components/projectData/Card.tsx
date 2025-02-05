@@ -12,7 +12,7 @@ const Card = ({ repo, key }: { repo: Repo; key: number }) => {
       <h2 className="text-xl font-bold mb-2 dark:text-gray-400 text-gray-900">
         {repo.Name}
       </h2>
-      <p className="text-gray-700 dark:text-[rgb(136,143,155)]">
+      <p className="text-gray-700 dark:text-[rgb(136,143,155)] text-justify">
         {repo.Description || "No description available."}
       </p>
       <div className="flex justify-start items-center mt-4 mb-24 sm:mb-12">

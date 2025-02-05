@@ -19,7 +19,7 @@ const BannerEvent = () => {
           The Hub of Open Source Contribution Event
         </h1>
         <br />
-        <h3 className="text-base md:text-xl font-light">
+        <h3 className="text-base md:text-xl font-light text-justify">
           DevRhylme Foundation invites you to dive into the world of open source through impactful contributions and engaging events. Collaborate, innovate, and create at our hackathons, or host your own to empower the developer community.
         </h3>
         <br />
