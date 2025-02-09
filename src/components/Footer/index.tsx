@@ -1,28 +1,34 @@
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from 'react';
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
+import { useState, useEffect } from "react";
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import PrivacyPolicyPopup from "../Privacy";
 
 const Footer = () => {
-  const [privacyPolicy, setPrivacyPolicy] = useState('');
-  const [legalNotice, setLegalNotice] = useState('');
-  const [termsOfService, setTermsOfService] = useState('');
+  const [privacyPolicy, setPrivacyPolicy] = useState("");
+  const [legalNotice, setLegalNotice] = useState("");
+  const [termsOfService, setTermsOfService] = useState("");
   const [isPopupOpen, setIsPopupOpen] = useState(false);
-  const [popupContent, setPopupContent] = useState('');
-
+  const [popupContent, setPopupContent] = useState("");
+  const [isPopupOpenprivacy, setIsPopupOpenprivacy] = useState<boolean>(false);
   useEffect(() => {
     const fetchContent = async () => {
       try {
-        const [privacyPolicyRes, legalNoticeRes, termsOfServiceRes] = await Promise.all([
-          fetch('/content/privacy-policy.md'),
-          fetch('/content/legal-notice.md'),
-          fetch('/content/terms-of-service.md'),
-        ]);
+        const [privacyPolicyRes, legalNoticeRes, termsOfServiceRes] =
+          await Promise.all([
+            fetch("/content/privacy-policy.md"),
+            fetch("/content/legal-notice.md"),
+            fetch("/content/terms-of-service.md"),
+          ]);
 
-        if (!privacyPolicyRes.ok || !legalNoticeRes.ok || !termsOfServiceRes.ok) {
-          throw new Error('Failed to fetch content');
+        if (
+          !privacyPolicyRes.ok ||
+          !legalNoticeRes.ok ||
+          !termsOfServiceRes.ok
+        ) {
+          throw new Error("Failed to fetch content");
         }
 
         const privacyPolicyText = await privacyPolicyRes.text();
@@ -33,9 +39,8 @@ const Footer = () => {
         setLegalNotice(legalNoticeText);
         setTermsOfService(termsOfServiceText);
       } catch (error) {
-        console.error('Error fetching content:', error);
+        console.error("Error fetching content:", error);
       }
-      
     };
 
     fetchContent();
@@ -48,27 +53,40 @@ const Footer = () => {
 
   const closePopup = () => {
     setIsPopupOpen(false);
-    setPopupContent('');
+    setPopupContent("");
   };
 
   const renderers = {
-    code({ node, inline, className, children, ...props }: { node?: any; inline?: boolean; className?: string; children?: React.ReactNode; [key: string]: any }) {
+    code({
+      node,
+      inline,
+      className,
+      children,
+      ...props
+    }: {
+      node?: any;
+      inline?: boolean;
+      className?: string;
+      children?: React.ReactNode;
+      [key: string]: any;
+    }) {
       return !inline ? (
         <SyntaxHighlighter
-          language={String(className || '').replace('language-', '')}
+          language={String(className || "").replace("language-", "")}
         >
-          {String(children).replace(/\n$/, '')}
+          {String(children).replace(/\n$/, "")}
         </SyntaxHighlighter>
       ) : (
         <code className={className} {...props}>
           {children}
         </code>
       );
-    }
+    },
   };
 
   return (
-    <footer id="footer"
+    <footer
+      id="footer"
       className="wow fadeInUp relative z-10 bg-[#090E34] pt-20 lg:pt-[100px]"
       data-wow-delay=".15s"
     >
@@ -85,8 +103,10 @@ const Footer = () => {
                   className="max-w-full"
                 />
               </Link>
-              <p className="mb-8 max-w-[270px] text-base text-gray-7 text-justify">
-              Our mission is to build cutting-edge solutions while empowering organizations globally through collaborative innovation and knowledge-sharing.
+              <p className="mb-8 max-w-[270px] text-justify text-base text-gray-7">
+                Our mission is to build cutting-edge solutions while empowering
+                organizations globally through collaborative innovation and
+                knowledge-sharing.
               </p>
               <div className="-mx-3 flex items-center">
                 {/* <a
@@ -169,28 +189,32 @@ const Footer = () => {
               </h4>
               <ul>
                 <li>
-                  <Link href="/"
+                  <Link
+                    href="/"
                     className="mb-3 inline-block text-base text-gray-7 hover:text-primary"
                   >
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#features"
+                  <Link
+                    href="/#features"
                     className="mb-3 inline-block text-base text-gray-7 hover:text-primary"
                   >
                     Features
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about"
+                  <Link
+                    href="/about"
                     className="mb-3 inline-block text-base text-gray-7 hover:text-primary"
                   >
                     About
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#testimonals"
+                  <Link
+                    href="/#testimonals"
                     className="mb-3 inline-block text-base text-gray-7 hover:text-primary"
                   >
                     Testimonial
@@ -214,12 +238,12 @@ const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="/#footer"
+                  <button
+                    onClick={() => setIsPopupOpenprivacy(true)}
                     className="mb-3 inline-block text-base text-gray-7 hover:text-primary"
                   >
                     Privacy policy
-                  </a>
+                  </button>
                 </li>
                 <li>
                   <a
@@ -259,7 +283,7 @@ const Footer = () => {
                     href="https://github.com/DEVRhylme-Foundation/new-website"
                     className="mb-3 inline-block text-base text-gray-7 hover:text-primary"
                   >
-                    Website 
+                    Website
                   </a>
                 </li>
                 <li>
@@ -311,97 +335,107 @@ const Footer = () => {
       <div className="mt-12 border-t border-[#8890A4] border-opacity-40 py-8 lg:mt-[60px]">
         <div className="container">
           <div className="-mx-4 flex flex-wrap">
-        <div className="w-full px-4 md:w-2/3 lg:w-1/2">
-          <div className="my-1">
-            <div className="-mx-3 flex items-center justify-center md:justify-start">
-          <a
-            href="#"
-            onClick={(e) => { e.preventDefault(); openPopup(privacyPolicy); }}
-            className="px-3 text-base text-gray-7 hover:text-white hover:underline"
-          >
-            Privacy policy
-          </a>
-          <a
-            href="#"
-            onClick={(e) => { e.preventDefault(); openPopup(legalNotice); }}
-            className="px-3 text-base text-gray-7 hover:text-white hover:underline"
-          >
-            Legal notice
-          </a>
-          <a
-            href="#"
-            onClick={(e) => { e.preventDefault(); openPopup(termsOfService); }}
-            className="px-3 text-base text-gray-7 hover:text-white hover:underline"
-          >
-            Terms of service
-          </a>
+            <div className="w-full px-4 md:w-2/3 lg:w-1/2">
+              <div className="my-1">
+                <div className="-mx-3 flex items-center justify-center md:justify-start">
+                  <button
+                    onClick={() => setIsPopupOpenprivacy(true)}
+                    className="mb-3 inline-block text-base text-gray-7 hover:text-primary"
+                  >
+                    Privacy policy
+                  </button>
+                  <a
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      openPopup(legalNotice);
+                    }}
+                    className="px-3 text-base text-gray-7 hover:text-white hover:underline"
+                  >
+                    Legal notice
+                  </a>
+                  <a
+                    href="#"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      openPopup(termsOfService);
+                    }}
+                    className="px-3 text-base text-gray-7 hover:text-white hover:underline"
+                  >
+                    Terms of service
+                  </a>
+                </div>
+              </div>
+              <PrivacyPolicyPopup
+                isOpen={isPopupOpenprivacy}
+                onClose={() => setIsPopupOpenprivacy(false)}
+              />
+
+              {/* Popup Modal */}
+              {isPopupOpen && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-60">
+                  <div className="relative max-h-[80vh] w-full max-w-2xl overflow-y-auto rounded-lg bg-white p-6 shadow-lg">
+                    {/* Close Button */}
+                    <button
+                      className="absolute right-3 top-3 text-gray-600 hover:text-gray-900"
+                      onClick={closePopup}
+                      aria-label="Close"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth="2"
+                        stroke="currentColor"
+                        className="h-6 w-6"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M6 18L18 6M6 6l12 12"
+                        />
+                      </svg>
+                    </button>
+
+                    {/* Modal Content */}
+                    <h2 className="mb-4 text-2xl font-bold text-gray-800">
+                      Popup Content
+                    </h2>
+                    <div className="prose max-w-none text-gray-700">
+                      <ReactMarkdown
+                        remarkPlugins={[remarkGfm]}
+                        components={renderers}
+                      >
+                        {popupContent}
+                      </ReactMarkdown>
+                    </div>
+
+                    {/* Footer Button */}
+                    <button
+                      className="mt-6 w-full rounded bg-blue-600 px-4 py-2 font-semibold text-white hover:bg-blue-700 sm:w-auto"
+                      onClick={closePopup}
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+              )}
             </div>
-          </div>
-
-          {/* Popup Modal */}
-{isPopupOpen && (
-  <div className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-60 z-50">
-    <div className="bg-white p-6 rounded-lg shadow-lg max-w-2xl w-full max-h-[80vh] overflow-y-auto relative">
-      {/* Close Button */}
-      <button
-        className="absolute top-3 right-3 text-gray-600 hover:text-gray-900"
-        onClick={closePopup}
-        aria-label="Close"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth="2"
-          stroke="currentColor"
-          className="w-6 h-6"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M6 18L18 6M6 6l12 12"
-          />
-        </svg>
-      </button>
-
-      {/* Modal Content */}
-      <h2 className="text-2xl font-bold mb-4 text-gray-800">Popup Content</h2>
-      <div className="prose max-w-none text-gray-700">
-        <ReactMarkdown
-          remarkPlugins={[remarkGfm]}
-          components={renderers}
-        >
-          {popupContent}
-        </ReactMarkdown>
-      </div>
-
-      {/* Footer Button */}
-      <button
-        className="mt-6 px-4 py-2 bg-blue-600 text-white font-semibold rounded hover:bg-blue-700 w-full sm:w-auto"
-        onClick={closePopup}
-      >
-        Close
-      </button>
-    </div>
-  </div>
-)}
-
-        </div>
-        <div className="w-full px-4 md:w-1/3 lg:w-1/2">
-          <div className="my-1 flex justify-center md:justify-end">
-            <p className="text-base text-gray-7">
-              © {new Date().getFullYear()} - Designed and Developed by{" "}
-              <a
-                href="https://github.com/DEVRhylme-Foundation"
-                rel="nofollow noopner noreferrer"
-                target="_blank"
-                className="text-gray-1 hover:underline"
-              >
-                DEVRhylme Technical Team
-              </a>
-            </p>
-          </div>
-        </div>
+            <div className="w-full px-4 md:w-1/3 lg:w-1/2">
+              <div className="my-1 flex justify-center md:justify-end">
+                <p className="text-base text-gray-7">
+                  © {new Date().getFullYear()} - Designed and Developed by{" "}
+                  <a
+                    href="https://github.com/DEVRhylme-Foundation"
+                    rel="nofollow noopner noreferrer"
+                    target="_blank"
+                    className="text-gray-1 hover:underline"
+                  >
+                    DEVRhylme Technical Team
+                  </a>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
