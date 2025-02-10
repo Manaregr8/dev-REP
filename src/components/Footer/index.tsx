@@ -5,6 +5,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import PrivacyPolicyPopup from "../Privacy";
+import LegalNoticePopup from "../LegalNotice";
 
 const Footer = () => {
   const [privacyPolicy, setPrivacyPolicy] = useState("");
@@ -13,6 +14,7 @@ const Footer = () => {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [popupContent, setPopupContent] = useState("");
   const [isPopupOpenprivacy, setIsPopupOpenprivacy] = useState<boolean>(false);
+  const [isPopupOpenlegal, setIsPopupOpenlegal] = useState<boolean>(false);
   useEffect(() => {
     const fetchContent = async () => {
       try {
@@ -344,16 +346,12 @@ const Footer = () => {
                   >
                     Privacy policy
                   </button>
-                  <a
-                    href="#"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      openPopup(legalNotice);
-                    }}
+                  <button
+                    onClick={() => setIsPopupOpenlegal(true)}
                     className="px-3 text-base text-gray-7 hover:text-white hover:underline"
                   >
                     Legal notice
-                  </a>
+                  </button>
                   <a
                     href="#"
                     onClick={(e) => {
@@ -370,7 +368,7 @@ const Footer = () => {
                 isOpen={isPopupOpenprivacy}
                 onClose={() => setIsPopupOpenprivacy(false)}
               />
-
+              <LegalNoticePopup isOpen={isPopupOpenlegal} onClose={()=> setIsPopupOpenlegal(false)}/>
               {/* Popup Modal */}
               {isPopupOpen && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-60">
