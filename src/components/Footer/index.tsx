@@ -247,14 +247,6 @@ const Footer = () => {
                     Privacy policy
                   </button>
                 </li>
-                <li>
-                  <a
-                    href="/#footer"
-                    className="mb-3 inline-block text-base text-gray-7 hover:text-primary"
-                  >
-                    Terms of Service
-                  </a>
-                </li>
               </ul>
             </div>
           </div>
@@ -352,16 +344,6 @@ const Footer = () => {
                   >
                     Legal notice
                   </button>
-                  <a
-                    href="#"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      openPopup(termsOfService);
-                    }}
-                    className="px-3 text-base text-gray-7 hover:text-white hover:underline"
-                  >
-                    Terms of service
-                  </a>
                 </div>
               </div>
               <PrivacyPolicyPopup

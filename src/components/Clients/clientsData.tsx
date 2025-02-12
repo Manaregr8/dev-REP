@@ -42,4 +42,11 @@ export const clientsData: Client[] = [
     logoWhite: "/images/brands/CoinDesk_dark.png", 
     link: "https://www.coindesk.com/",
   },
+  {
+    id: 7,
+    title: "Code4GovTech",
+    logo: "/images/brands/C4GT.webp",
+    logoWhite: "/images/brands/C4GT.webp", 
+    link: "https://codeforgovtech.in/",
+  },
 ];
