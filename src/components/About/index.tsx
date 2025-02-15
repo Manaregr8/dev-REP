@@ -37,7 +37,7 @@ const About = () => {
                     className={`relative mb-4 sm:mb-8 sm:h-[400px] md:h-[540px] lg:h-[400px] xl:h-[500px] `}
                   >
                     <Image
-                      src="/images/about/about-image-01.jpg"
+                      src="/images/about/about00.png"
                       alt="about image"
                       fill
                       className="h-full w-full object-cover object-center"

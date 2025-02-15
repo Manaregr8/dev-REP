@@ -105,7 +105,7 @@ const Footer = () => {
                   className="max-w-full"
                 />
               </Link>
-              <p className="mb-8 max-w-[270px] text-justify text-base text-gray-7">
+              <p className="mb-8 max-w-[270px] text-base text-gray-7">
                 Our mission is to build cutting-edge solutions while empowering
                 organizations globally through collaborative innovation and
                 knowledge-sharing.
@@ -340,7 +340,7 @@ const Footer = () => {
                   </button>
                   <button
                     onClick={() => setIsPopupOpenlegal(true)}
-                    className="px-3 text-base text-gray-7 hover:text-white hover:underline"
+                    className="px-3 mb-3 inline-block text-base text-gray-7 hover:text-primary"
                   >
                     Legal notice
                   </button>

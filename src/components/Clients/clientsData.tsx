@@ -49,4 +49,18 @@ export const clientsData: Client[] = [
     logoWhite: "/images/brands/C4GT.webp", 
     link: "https://codeforgovtech.in/",
   },
+  {
+    id: 8,
+    title: "TWS Conference",
+    logo: "/images/brands/TWSW.webp",
+    logoWhite: "/images/brands/TWSB.webp", 
+    link: "https://twsconference.org/",
+  },
+  {
+    id: 9,
+    title: "Crypto Expo Dubai",
+    logo: "/images/brands/CEDW.png",
+    logoWhite: "/images/brands/CEDB.png", 
+    link: "https://cryptoexpodubai.com/dubai",
+  },
 ];

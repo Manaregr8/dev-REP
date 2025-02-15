@@ -9,6 +9,13 @@ const Hero = () => {
         id="home"
         className="relative overflow-hidden bg-primary pt-[150px] md:pt-[150px] lg:pt-[160px]"
       >
+        <div className='robotiii absolute h-56 w-full justify-center items-center top-[450px] sm:top-[600px] md:top-[470px]'>
+        <center><div  className='relative h-48 sm:w-2/5 md:w-2/5 justify-center z-4'>
+        <Spline
+        scene="https://prod.spline.design/xftrkvFRb1DBOaCk/scene.splinecode" 
+      />
+          </div></center>
+        </div>
         <div className="container">
         
           <div className="-mx-4 flex flex-wrap items-center">
