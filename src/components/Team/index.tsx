@@ -24,7 +24,7 @@ const teamData: TeamType[] = [
   {
     id: 3,
     name: "Vedant Anand",
-    designation: "Marketing Manager",
+    designation: "CMO",
     image: "/images/team/Vedant_Anand.jpg",
     linkedinLink: "https://www.linkedin.com/in/vedantanand17",
     githubLink: "https://github.com/vedantanand17",
