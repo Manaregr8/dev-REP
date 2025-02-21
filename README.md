@@ -24,6 +24,10 @@ Our goal is to provide a platform for innovation, collaboration, and open-source
 
 ## 🚀 Getting Started
 
+Click on the Deploy button to deploy the project on Vercel.
+
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/templates/Next.js/devrhylme-saas-website)
+
 Follow these steps to set up the project on your local machine.
 
 ### Prerequisites
@@ -33,10 +37,10 @@ Ensure you have the following installed:
 
 ### Installation
 
-1. **Clone the Repository**:
+1. After deploying the project on Vercel, **clone the repository**:
    ```bash
-   git clone https://github.com/DevRhylmeFoundation/new-website.git
-   cd new-website
+   git clone https://github.com/USERNAME/devrhylme-saas-website.git
+   cd devrhylme-saas-website
    ```
 
 2. **Install Dependencies**:
