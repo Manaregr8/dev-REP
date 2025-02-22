@@ -232,12 +232,12 @@ const Footer = () => {
               </h4>
               <ul>
                 <li>
-                  <a
-                    href="/#footer"
+                  <button
+                    onClick={() => setIsPopupOpenlegal(true)}
                     className="mb-3 inline-block text-base text-gray-7 hover:text-primary"
                   >
-                    Documentation
-                  </a>
+                    Legal
+                  </button>
                 </li>
                 <li>
                   <button
